@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const db_name = "pizzatime";
+const db_name = "kasparov";
 // const db_name = process.env.DB_NAME;
 
 mongoose.connect("mongodb://localhost/" + db_name, {

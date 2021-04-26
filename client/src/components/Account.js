@@ -63,10 +63,10 @@ const Account = (props) => {
                     <form onSubmit={submitHandler}>
                         <h2 className="account-h2">Account Info</h2>
                         <div>
-                            <label>First Name: </label>
+                            <label>User Name: </label>
                             <input className="userName-field" type="text"
-                                name="firstName"
-                                value={firstName}
+                                name="userName"
+                                value={userName}
                                 onChange={ (e) => setUserName( e.target.value ) }
                             />
                         </div>

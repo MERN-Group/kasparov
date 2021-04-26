@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import '../css/Account.css'
 
 const Register = props => {
     const [confirmReg, setConfirmReg] = useState("");
