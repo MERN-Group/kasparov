@@ -1,10 +1,25 @@
+require("dotenv").config();
+
 const express = require('express');
-const cors = require('cors');
 const app = express();
-require('./config/mongoose.config.js');               
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
-app.use(express.json());                           
-app.use(express.urlencoded({ extended: true }));   
-app.listen(8000, () => {
-    console.log("Listening at Port 8000")
-})
+const cors = require('cors');
+const port = 8000;
+const cookieParser = require('cookie-parser');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+}));
+app.use(cookieParser());
+
+// setup mongodb
+// this require statement is like copying and pasting the code from that file right here!
+require('./config/mongoose.config');
+
+// setup routes
+require('./routes/user.routes')(app);
+
+
+const server = app.listen(port, () => console.log("Listening on port: " + port));
