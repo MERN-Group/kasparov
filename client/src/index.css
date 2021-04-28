@@ -14,7 +14,11 @@ code {
 }
 .signin{
   margin: 0px auto;
+  padding-top: 10%;
   display: flex;
   justify-content:space-around;
   color: white;
+}
+.navbar{
+  background-color: #99aab5;
 }
