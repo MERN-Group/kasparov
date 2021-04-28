@@ -11,7 +11,7 @@ const MatchFinder = (props) => {
     }
 
     return (
-        <div>
+        <div className="match-finder">
             <h2>Find a match!</h2>
             <button className="pure-button pure-button-primary" onClick={handleFindMatch}>Find match</button>
         </div>
