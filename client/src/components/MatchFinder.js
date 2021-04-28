@@ -13,7 +13,7 @@ const MatchFinder = (props) => {
     return (
         <div>
             <h2>Find a match!</h2>
-            <button class="pure-button pure-button-primary" onClick={handleFindMatch}>Find match</button>
+            <button className="pure-button pure-button-primary" onClick={handleFindMatch}>Find match</button>
         </div>
     );
 };
