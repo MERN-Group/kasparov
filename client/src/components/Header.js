@@ -33,17 +33,16 @@ const Header = (props) => {
     }
 
     return (
-            <div class="header">
-    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed navbar">
-        <a class="pure-menu-heading" onClick={ () => navigate("/")} style={{cursor: 'pointer'}}>Kasparov</a>
-
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item pure-menu-selected" style={{cursor: 'pointer'}}><a onClick={ () => navigate("/")} class="pure-menu-link">Home</a></li>
-            <li class="pure-menu-item" style={{cursor: 'pointer'}}><a onClick={() => navigate("/account")} class="pure-menu-link">Account</a></li>
-            <li class="pure-menu-item" style={{cursor: 'pointer'}}><a onClick={(e) => handleButton(e)} class="pure-menu-link">{loggedIn ? "Logout" : "Login"}</a></li>
-        </ul>
-    </div>
-</div>
+        <div className="header">
+            <div className="home-menu pure-menu pure-menu-horizontal pure-menu-fixed navbar">
+                <a className="pure-menu-heading" onClick={ () => navigate("/")} style={{cursor: 'pointer'}}>Kasparov</a>
+                <ul className="pure-menu-list">
+                    <li className="pure-menu-item pure-menu-selected" style={{cursor: 'pointer'}}><a onClick={ () => navigate("/")} className="pure-menu-link">Home</a></li>
+                    <li className="pure-menu-item pure-menu-link" style={{cursor: 'pointer'}}><a onClick={() => navigate("/account")} className="">Account</a></li>
+                    <li className="pure-menu-item pure-menu-link" style={{cursor: 'pointer'}}><a onClick={(e) => handleButton(e)} className="pure-menu-link">{loggedIn ? "Logout" : "Login"}</a></li>
+                </ul>
+            </div>
+        </div>
     )
 };
 
