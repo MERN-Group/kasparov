@@ -33,11 +33,17 @@ const Header = (props) => {
     }
 
     return (
-        <div id="header">
-            <button className="header-btn" onClick={ () => navigate("/")}>Home</button>
-            <button className="header-btn" onClick={() => navigate("/account")}>Account</button>
-            <button className="header-btn" onClick={(e) => handleButton(e)}>{loggedIn ? "Logout" : "Login"}</button>
-        </div>
+            <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed navbar">
+        <a class="pure-menu-heading" href="">Kasparov</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item pure-menu-selected"><a onClick={ () => navigate("/")} class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><a onClick={() => navigate("/account")} class="pure-menu-link">Account</a></li>
+            <li class="pure-menu-item"><a onClick={(e) => handleButton(e)} class="pure-menu-link">{loggedIn ? "Logout" : "Login"}</a></li>
+        </ul>
+    </div>
+</div>
     )
 };
 

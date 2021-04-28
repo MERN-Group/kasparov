@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from '@reach/router';
 // import '../css/LoginUser.css'
-import '../css/pure.css'
 
 const LoginUser = (props) => {
     const { loggedIn, setLoggedIn, setUserId } = props;
@@ -36,36 +35,38 @@ const LoginUser = (props) => {
     };
 
     return (
-        <div className="login-div">
-            <h2>Login</h2>
-            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
-            <form className="login-form" onSubmit={login} class="pure-form-aligned">
-                <div>
-                <label className="email-label">Email:</label>
-                <input
-                    className="email-input"
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                </div>
-                <div>
-                <label className="login-label">Password:</label>
-                <input 
-                    className="password-input"
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                </div>
-                <div className="center">
-                <button className="sign-in-btn" type="submit">Sign In</button>
-                <button className="register-btn" onClick={() => navigate("/register")}>Create Account</button>
-                </div>
-            </form>
-        </div>
+        <div class="login">
+        <div  class="pure-form pure-form-aligned">
+        <div class="pure-controls">
+        <h2>Login</h2></div>
+        <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+        <form className="login-form" onSubmit={login}>
+            <div class="pure-control-group">
+            <label className="email-label">Email:</label>
+            <input
+                className="email-input"
+                type="text"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            </div>
+            <div class="pure-control-group">
+            <label className="login-label">Password:</label>
+            <input 
+                className="password-input"
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            </div>
+            <div className="center" class="pure-controls">
+            <button className="pure-button pure-button-primary" type="submit">Sign In</button>
+            </div>
+        </form>
+    </div>
+    </div>
     );
 };
 
