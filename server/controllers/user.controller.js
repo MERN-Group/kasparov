@@ -12,9 +12,11 @@ module.exports = {
 
         userReg.save()
         .then(() => {
+            
             res.json({ message: "Successfully Registered", user: userReg })
         })
         .catch((err) => {
+            console.log('failed')
             res.status(400).json(err);
         })
     },

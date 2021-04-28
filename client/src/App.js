@@ -21,8 +21,7 @@ function App() {
 
     return (
         <div className="App">
-            {/* <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />  */}
-            
+            <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> 
             <Router>
                 {/* default login/register page */}
                 <LogReg path="/logreg" loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUserId={setUserId}/>
