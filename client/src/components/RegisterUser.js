@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import '../css/pure.css'
 
 const Register = props => {
     const [confirmReg, setConfirmReg] = useState("");
@@ -58,96 +59,61 @@ const Register = props => {
 
     return (
         <div>
-        <h2>Register</h2>
-        {
-            confirmReg ? 
-            <h4 style={{color: "green"}}>{confirmReg}</h4>
-            : null
-        }
-        <form onSubmit={register}>
-            <div>
-            <label className="register-label">First Name:</label>
-            {
-                errs.firstName ? 
-                <span className="error-text">{ errs.firstName.message }</span>
-                : null
-            }
-            <input
-                className="fname-field"
-                type="text"
-                name="firstName"
-                value={user.firstName}
-                onChange={(e) => handleChange(e)}
-            />
-            </div>
-            <div>
-            <label className="register-label">Last Name:</label>
-            {
-                errs.lastName ? 
-                <span className="error-text">{ errs.lastName.message }</span>
-                : null
-            }
-            {/* React will automatically pass in the event to a callback function */}
-            {/* The following will do EXACTLY the same things */}
-                {/* onChange={ handleChange } */}
-                {/* onChange={(e) => handleChange(e)} */}
-            <input
-                className="lname-field"
-                type="text"
-                name="lastName"
-                value={user.lastName}
-                onChange={ handleChange }
-            />
-            </div>
-            <div>
-            <label className="register-label">Email:</label>
-            {
-                errs.email? 
-                <span className="error-text">{ errs.email.message }</span>
-                : null
-            }
-            <input
-                className="email-field"
-                type="email"
-                name="email"
-                value={user.email}
-                onChange={ handleChange }
-            />
-            </div>
-            <div>
-            <label className="register-label">Password:</label>
-            {
-                errs.password ? 
-                <span className="error-text">{ errs.password.message }</span>
-                : null
-            }
-            <input
-                className="password-field"
-                type="password"
-                name="password"
-                value={user.password}
-                onChange={ handleChange }
-            />
-            </div>
-            <div>
-            <label className="register-label">Confirm:</label>
-            {
-                errs.confirmPassword? 
-                <span className="error-text">{ errs.confirmPassword.message }</span>
-                : null
-            }
-            <input
-                className="password-confirm-field"
-                type="password"
-                name="confirmPassword"
-                value={user.confirmPassword}
-                onChange={ handleChange }
-            />
-            </div>
-            <div className="center">
-            <button className="register-btn" type="submit">Register</button>
-            </div>
-        </form>
+            <form onSubmit={register} class="pure-form pure-form-aligned">
+                <fieldset>
+                    <div class="pure-controls">
+                        <h2>Register</h2>
+                        {
+                            confirmReg ? 
+                            <h4 style={{color: "green"}}>{confirmReg}</h4>
+                            : null
+                        }
+                    </div>
+                    <div class="pure-control-group">
+                        <label className="register-label">User Name:</label>
+                        <input id="aligned-name" required=""
+                            className="fname-field"
+                            type="text"
+                            name="firstName"
+                            value={user.firstName}
+                            onChange={(e) => handleChange(e)}
+                        />
+                    </div>
+                    <div class="pure-control-group">
+                        <label className="register-label">Email:</label>
+                        <input id="aligned-email" required=""
+                            className="email-field"
+                            type="email"
+                            name="email"
+                            value={user.email}
+                            onChange={ handleChange }
+                        />
+                    </div>
+                    <div class="pure-control-group">
+                        <label className="register-label">Password:</label>
+                        <input id="aligned-password" required=""
+                            className="password-field"
+                            type="password"
+                            name="password"
+                            value={user.password}
+                            onChange={ handleChange }
+                        />
+                    </div>
+                    <div class="pure-control-group">
+                    <label className="register-label">Confirm:</label>
+                    <input id="aligned-password" required=""
+                        className="password-confirm-field" 
+                        type="password"
+                        name="confirmPassword"
+                        value={user.confirmPassword}
+                        onChange={ handleChange }
+                    />
+                    </div>
+                    <div className="center" class="pure-controls">
+                        <button className="pure-button pure-button-primary" type="submit">Register</button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     );
 };
