@@ -5,7 +5,7 @@ const MatchFinderView = (props) => {
     // const { loggedIn, setLoggedIn, setUserId, roomId } = props;
     return (
         <div>
-            <MatchFinder props={props}/>
+            <MatchFinder loggedIn={props.loggedIn}/>
         </div>
     );
 };

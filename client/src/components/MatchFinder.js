@@ -1,5 +1,5 @@
 import { navigate } from "@reach/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const MatchFinder = (props) => {
     const { loggedIn, userId, userName } = props;
@@ -10,10 +10,22 @@ const MatchFinder = (props) => {
         navigate('/match')
     }
 
+    useEffect(() => {
+        if ( loggedIn == false ) {
+            navigate("/logreg")
+        }
+    }, [])
+
     return (
         <div className="match-finder">
-            <h2>Find a match!</h2>
-            <button className="pure-button pure-button-primary" onClick={handleFindMatch}>Find match</button>
+            { loggedIn ? 
+                <>
+                    <h2>Find a match!</h2>
+                    <button className="pure-button pure-button-primary" onClick={handleFindMatch}>Find match</button>
+                </>
+                :
+                null
+            }
         </div>
     );
 };

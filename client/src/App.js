@@ -10,7 +10,7 @@ import MatchFinderView from './views/MatchFinderView'
 function App() {
     const NotFound = () => {
         return (
-            <h1 style={{ textAlign: "center", color: "red" }}>Sorry, but your route was not found</h1>
+            <h1 style={{ textAlign: "center", color: "red", marginTop: "500px" }}>Sorry, but your route was not found</h1>
         )
     };
 
@@ -18,7 +18,7 @@ function App() {
     const [ userId, setUserId ] = useState("");
     const [ roomId, setRoomId ] = useState("");
     const [ userName, setUserName ] = useState("");
-
+    // let style = {marginTop: }
     return (
         <div className="App">
             <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} /> 

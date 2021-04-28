@@ -56,11 +56,11 @@ const Register = props => {
     };
 
     return (
-        <div class="register">
-        <div class="pure-form pure-form-aligned">
+        <div className="register">
+        <div className="pure-form pure-form-aligned">
         <form onSubmit={register} >
             <fieldset>
-                <div class="pure-controls">
+                <div className="pure-controls">
                     <h2>Register</h2>
                     {
                         confirmReg ? 
@@ -68,7 +68,7 @@ const Register = props => {
                         : null
                     }
                 </div>
-                <div class="pure-control-group">
+                <div className="pure-control-group">
                     <label className="register-label">User Name:</label>
                     <input id="aligned-name" required=""
                         className="fname-field"
@@ -78,7 +78,7 @@ const Register = props => {
                         onChange={(e) => handleChange(e)}
                     />
                 </div>
-                <div class="pure-control-group">
+                <div className="pure-control-group">
                     <label className="register-label">Email:</label>
                     <input id="aligned-email" required=""
                         className="email-field"
@@ -88,7 +88,7 @@ const Register = props => {
                         onChange={ handleChange }
                     />
                 </div>
-                <div class="pure-control-group">
+                <div className="pure-control-group">
                     <label className="register-label">Password:</label>
                     <input id="aligned-password" required=""
                         className="password-field"
@@ -98,7 +98,7 @@ const Register = props => {
                         onChange={ handleChange }
                     />
                 </div>
-                <div class="pure-control-group">
+                <div className="pure-control-group">
                 <label className="register-label">Confirm:</label>
                 <input id="aligned-password" required=""
                     className="password-confirm-field" 
@@ -108,7 +108,7 @@ const Register = props => {
                     onChange={ handleChange }
                 />
                 </div>
-                <div className="center" class="pure-controls">
+                <div className="center pure-controls">
                     <button className="pure-button pure-button-primary" type="submit">Register</button>
                 </div>
             </fieldset>
