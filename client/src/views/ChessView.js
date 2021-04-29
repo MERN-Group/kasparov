@@ -1,11 +1,12 @@
 import React from "react";
-import Chess from '../components/chess/Chess'
+import ChessGame from '../components/chessComponents/ChessGame'
 
 const ChessView = (props) => {
-    // const { loggedIn, setLoggedIn, setUserId, roomId } = props;
+    const { userId, userName, match, socket } = props;
+    
     return (
         <div>
-            <Chess props={props}></Chess>
+            <ChessGame match={match} socket={socket} userId={userId} userName={userName}/>
         </div>
     );
 };
