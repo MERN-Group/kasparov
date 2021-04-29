@@ -8,8 +8,7 @@ const Register = props => {
 
     //    using a single state object to hold all data!
     const [ user, setUser ] = useState({
-        firstName: "",
-        lastName: "", 
+        username: "",
         email: "", 
         password: "", 
         confirmPassword: "",
@@ -41,8 +40,7 @@ const Register = props => {
             // when we successfully created the account, reset state for registration form
             //    We do this if we are NOT navigating automatically away from the page
             setUser({
-                firstName: "",
-                lastName: "", 
+                username: "",
                 email: "", 
                 password: "", 
                 confirmPassword: "",
@@ -75,8 +73,8 @@ const Register = props => {
                     <input id="aligned-name" required=""
                         className="fname-field"
                         type="text"
-                        name="firstName"
-                        value={user.firstName}
+                        name="username"
+                        value={user.username}
                         onChange={(e) => handleChange(e)}
                     />
                 </div>

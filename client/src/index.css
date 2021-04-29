@@ -22,3 +22,10 @@ code {
 .navbar{
   background-color: #99aab5;
 }
+.account{
+  margin: 0px auto;
+  padding-top: 10%;
+  display: flex;
+  justify-content:space-around;
+  color: white;
+}

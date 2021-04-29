@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Account = (props) => {
     const { loggedIn, userId } = props;
-    const [ userName, setUserName ] = useState("");
+    const [ username, setUserName ] = useState("");
     const [ email, setEmail ] = useState("");
     // const [ errs, setErrs ] = useState({});
 
@@ -13,7 +13,7 @@ const Account = (props) => {
         e.preventDefault();
 
         axios.put("http://localhost:8000/api/user/" + userId, {
-            userName: userName,
+            username: username,
             email: email,
         })
         .then((res) => {
@@ -43,7 +43,7 @@ const Account = (props) => {
                     console.log(res.data.errors);
                 }
                 else {
-                    setUserName(res.data.userName);
+                    setUserName(res.data.username);
                     setEmail(res.data.email);
                 }
             })
@@ -59,27 +59,27 @@ const Account = (props) => {
             // check if we are logged in or not
             loggedIn ? 
                 // we are logged in so display our data
-                <div className="account-info">
+                <div class="pure-form pure-form-aligned">
                     <form onSubmit={submitHandler}>
                         <h2 className="account-h2">Account Info</h2>
-                        <div>
+                        <div className="pure-control-group">
                             <label>User Name: </label>
-                            <input className="userName-field" type="text"
-                                name="userName"
-                                value={userName}
+                            <input  type="text"
+                                name="username"
+                                value={username}
                                 onChange={ (e) => setUserName( e.target.value ) }
                             />
                         </div>
-                        <div>
+                        <div className="pure-control-group">
                             <label>Email: </label>
-                            <input className="email-field" type="text"
+                            <input  type="text"
                                 name="email"
                                 value={email}
                                 onChange={ (e) => setEmail( e.target.value ) }
                             />
                         </div>
-                        <div>
-                            <button className="update-btn" type="submit">Update Info</button>
+                        <div className="pure-controls">
+                            <button className="pure-button pure-button-primary" type="submit">Update Info</button>
                         </div>
                     </form>
                 </div>
