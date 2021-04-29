@@ -4,7 +4,7 @@ import { navigate } from '@reach/router';
 // import '../css/LoginUser.css'
 
 const LoginUser = (props) => {
-    const { loggedIn, setLoggedIn, setUserId } = props;
+    const { loggedIn, setLoggedIn, setUserId, setUserName } = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -26,6 +26,8 @@ const LoginUser = (props) => {
             setLoggedIn(true);
             console.log(res.data.id);
             setUserId(res.data.id);
+            console.log("username: " + res.data.userName);
+            setUserName(res.data.userName);
             navigate("/");
         })
         .catch(err => {

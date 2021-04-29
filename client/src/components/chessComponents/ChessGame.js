@@ -3,7 +3,8 @@ import { gameSubject, initGame, resetGame } from './Game'
 import Board from './Board'
 import '../../App.css'
 
-const Chess = (props) => {
+const ChessGame = (props) => {
+    const { userId, userName, match, socket } = props;
     const [board, setBoard] = useState([])
     const [isGameOver, setIsGameOver] = useState()
     const [result, setResult] = useState()
@@ -18,6 +19,7 @@ const Chess = (props) => {
         })
         return () => subscribe.unsubscribe()
     }, [])
+
     return (
         <div className="container">
             {isGameOver && (
@@ -29,11 +31,11 @@ const Chess = (props) => {
                 </h2>
             )}
             <div className="board-container">
-                <Board board={board} turn={turn}/>
+                <Board board={board} turn={turn} match={match} socket={socket} userId={userId} userName={userName}/>
             </div>
             {result && <p className="vertical-text">{result}</p>}
         </div>
     )
 }
 
-export default Chess;
+export default ChessGame;

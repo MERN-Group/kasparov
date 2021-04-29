@@ -70,7 +70,7 @@ module.exports = {
                     jwt.sign(
                         {
                         _id: userRecord._id,
-                        firstName: userRecord.firstName,
+                        userName: userRecord.userName,
                         // whatever I want in here
                         },
                         /*process.env.JWT_SECRET*/"secret"),
@@ -82,9 +82,10 @@ module.exports = {
                     .json({
                     message: "Successfully logged in!",
                     userLoggedIn: {
-                        userName: `${userRecord.firstName} ${userRecord.lastName}`,
+                        userName: `${userRecord.userName}`,
                     },
-                    id: userRecord._id
+                    id: userRecord._id,
+                    userName: userRecord.userName
                     })
                 } else {
                     // bad password

@@ -1,12 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import BoardSquare from './BoardSquare'
-export default function Board({ board, turn }) {
-const [currBoard, setCurrBoard] = useState([])
+
+
+
+export default function Board({ board, turn, match, socket, userId, userName, }) {
+
+    const [currBoard, setCurrBoard] = useState([])
+    const [, updateState] = useState();
+    const forceUpdate = React.useCallback(() => updateState({}), []);
+
+    socket.on('opponent_moved', newBoard => {
+        console.log(newBoard)
+        
+        updateBoard(newBoard);
+        forceUpdate()
+    })
+
+    function updateBoard(newBoard){
+        // inform the other player when a move is made
+        match.board = newBoard
+        socket.emit('new_move', match)
+        setCurrBoard(newBoard);
+    }
 
     useEffect(() => {
-        setCurrBoard(
-        turn === 'w' ? board.flat() : board.flat().reverse()
-        )
+        if ( match.player2.userId == userId )
+            setCurrBoard(board.flat().reverse())
+        else
+            setCurrBoard(board.flat())
+
+        // setCurrBoard(
+        // turn === 'w' ? board.flat() : board.flat().reverse()
+        // )
+        
     }, [board, turn])
 
     function getXYPosition(i) {

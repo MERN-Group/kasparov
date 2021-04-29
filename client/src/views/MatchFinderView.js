@@ -2,10 +2,11 @@ import React from "react";
 import MatchFinder from "../components/MatchFinder";
 
 const MatchFinderView = (props) => {
-    // const { loggedIn, setLoggedIn, setUserId, roomId } = props;
     return (
         <div>
-            <MatchFinder loggedIn={props.loggedIn}/>
+            <MatchFinder setMatch={props.setMatch} socket={props.socket} loggedIn={props.loggedIn} 
+                        userId={props.userId} userName={props.userName}
+            />
         </div>
     );
 };
