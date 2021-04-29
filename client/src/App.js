@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import Header from './components/Header';
 import AccountView from './views/AccountView';
 import LogReg from './views/LogReg';
+import ChessGame from './views/ChessGame';
 // import './css/App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
                 {/* account page for editing account */}
                 {/* <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>     */}
+                <ChessGame path= "/game" />
                 <NotFound default />
             </Router>
         </div>
