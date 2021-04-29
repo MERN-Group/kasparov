@@ -24,7 +24,9 @@ function App() {
 
 
                 {/* account page for editing account */}
-                {/* <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>     */}
+
+                <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>    
+                <ChessGame path= "/game" />
                 <NotFound default />
             </Router>
         </div>
