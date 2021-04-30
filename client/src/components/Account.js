@@ -61,27 +61,27 @@ const Account = (props) => {
             // check if we are logged in or not
             loggedIn ? 
                 // we are logged in so display our data
-                <div className="account-info">
+                <div className="pure-form pure-form-aligned">
                     <form onSubmit={submitHandler}>
-                        <h2 style={{marginTop: '50px'}}className="account-h2">Account Info</h2>
-                        <div>
+                        <h2 className="spacing">Account Info</h2>
+                        <div className="pure-control-group">
                             <label>User Name: </label>
-                            <input className="userName-field" type="text"
-                                name="userName"
+                            <input  type="text"
+                                name="useName"
                                 value={userName}
                                 onChange={ (e) => setUserName( e.target.value ) }
                             />
                         </div>
-                        <div>
+                        <div className="pure-control-group">
                             <label>Email: </label>
-                            <input className="email-field" type="text"
+                            <input  type="text"
                                 name="email"
                                 value={email}
                                 onChange={ (e) => setEmail( e.target.value ) }
                             />
                         </div>
-                        <div>
-                            <button className="update-btn" type="submit">Update Info</button>
+                        <div className="pure-controls">
+                            <button className="pure-button pure-button-primary" type="submit">Update Info</button>
                         </div>
                     </form>
                 </div>

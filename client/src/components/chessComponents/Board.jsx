@@ -1,39 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import BoardSquare from './BoardSquare'
+import { wasMoveValid } from './Game'
 
 
-
-export default function Board({ board, turn, match, socket, userId, userName, }) {
+export default function Board({ board, turn, match, socket, userId, userName}) {
 
     const [currBoard, setCurrBoard] = useState([])
     const [, updateState] = useState();
     const forceUpdate = React.useCallback(() => updateState({}), []);
+    const [ onMount, setOnMount ] = useState(true);
+    const [ ogBoard, setOGBoard ] = useState(board);
 
-    socket.on('opponent_moved', newBoard => {
-        console.log(newBoard)
+    function nyquil(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function sleep() {
+        await nyquil(2000);
         
-        updateBoard(newBoard);
-        forceUpdate()
-    })
-
-    function updateBoard(newBoard){
-        // inform the other player when a move is made
-        match.board = newBoard
-        socket.emit('new_move', match)
-        setCurrBoard(newBoard);
+        // Sleep in loop
+        for (let i = 0; i < 5; i++) {
+            if (i === 3)
+            await nyquil(2000);
+        }
     }
 
-    useEffect(() => {
-        if ( match.player2.userId == userId )
-            setCurrBoard(board.flat().reverse())
-        else
-            setCurrBoard(board.flat())
+    socket.on('opponent_moved', match => {
+        turn = match.turn
+        console.log("got move from opponent")
+        setCurrBoard(match.board.flat().reverse())
+    })
 
-        // setCurrBoard(
-        // turn === 'w' ? board.flat() : board.flat().reverse()
-        // )
-        
-    }, [board, turn])
+    useEffect(() => {
+        turn = match.turn;
+
+
+            
+    }, [])
+
+    useEffect(() => {
+        sleep();
+        // }  
+        setCurrBoard(
+            turn === 'w' ? board.flat() : board.flat().reverse()
+        )
+        // setCurrBoard(board.flat());
+    }, [board,turn])
 
     function getXYPosition(i) {
         const x = turn === 'w' ? i % 8 : Math.abs((i % 8) - 7)
@@ -51,11 +63,10 @@ export default function Board({ board, turn, match, socket, userId, userName, })
 
     function getPosition(i) {
         const { x, y } = getXYPosition(i)
-        const letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'][
-        x
-        ]
+        const letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'][x]
         return `${letter}${y + 1}`
     }
+
     return (
         <div className="board">
         {currBoard.map((piece, i) => (
