@@ -59,9 +59,9 @@ const Account = (props) => {
             // check if we are logged in or not
             loggedIn ? 
                 // we are logged in so display our data
-                <div class="pure-form pure-form-aligned">
+                <div className="pure-form pure-form-aligned">
                     <form onSubmit={submitHandler}>
-                        <h2 className="account-h2">Account Info</h2>
+                        <h2 className="spacing">Account Info</h2>
                         <div className="pure-control-group">
                             <label>User Name: </label>
                             <input  type="text"

@@ -22,10 +22,29 @@ code {
 .navbar{
   background-color: #99aab5;
 }
+
+.match-finder {
+    align-items: center;
+    width: 10%;
+    margin: 0px auto;
+    padding-top: 10%;
+    display: flex;
+    justify-content:space-around;
+    color: white;  
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 .account{
-  margin: 0px auto;
-  padding-top: 10%;
-  display: flex;
-  justify-content:space-around;
-  color: white;
+    align-items: center;
+    margin: 0px auto;
+    padding-top: 10%;
+    padding-right: 10%;
+    display: flex;
+    color: white;  
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.spacing{
+    padding-left: 8.5em;
+    padding-bottom: 2em;
 }
