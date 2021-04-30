@@ -20,7 +20,7 @@ code {
     color: white;
 }
 .navbar{
-    background-color: #99aab5;
+  background-color: #99aab5;
 }
 
 .match-finder {
@@ -33,4 +33,18 @@ code {
     color: white;  
     flex-wrap: wrap;
     flex-direction: column;
+}
+.account{
+    align-items: center;
+    margin: 0px auto;
+    padding-top: 10%;
+    padding-right: 10%;
+    display: flex;
+    color: white;  
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.spacing{
+    padding-left: 8.5em;
+    padding-bottom: 2em;
 }

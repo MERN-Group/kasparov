@@ -43,14 +43,10 @@ export default function Piece({
     const pieceStr = `${type}_${color}`
     return (
         <>
-        <DragPreviewImage connect={preview} src={imgDict[pieceStr]} />
-        <div
-            className="piece-container"
-            ref={drag}
-            style={{ opacity: isDragging ? 0 : 1 }}
-        >
-            <img src={imgDict[pieceStr]} alt="" className="piece" />
-        </div>
+            <DragPreviewImage connect={preview} src={imgDict[pieceStr]} />
+            <div className="piece-container" ref={drag} style={{ opacity: isDragging ? 0 : 1 }}>
+                <img src={imgDict[pieceStr]} alt="" className="piece" />
+            </div>
         </>
     )
 }

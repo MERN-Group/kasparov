@@ -9,11 +9,12 @@ import Promote from './Promote'
 export default function BoardSquare({piece,black,position}) 
 {
     const [promotion, setPromotion] = useState(null)
+
     const [, drop] = useDrop({
         accept: 'piece',
         drop: (item) => {
-        const [fromPosition] = item.id.split('_')
-        handleMove(fromPosition, position)
+            const [fromPosition] = item.id.split('_')
+            handleMove(fromPosition, position)
         },
     })
     useEffect(() => {

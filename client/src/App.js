@@ -28,10 +28,8 @@ function App() {
                 <LogReg path="/logreg" loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUserId={setUserId} setUserName={setUserName}/>
                 <MatchFinderView path="/" setMatch={setMatch} socket={socket} loggedIn={loggedIn} userId={userId} userName={userName}/>
                 <ChessView path={`/match/${match.roomId}`} match={match} socket={socket} userId={userId} userName={userName}/>
-                
                 {/* account page for editing account */}
                 <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>    
-            
                 <NotFound default />
             </Router>
         </div>
