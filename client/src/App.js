@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Router } from '@reach/router';
 import Header from './components/Header';
-// import AccountView from './views/AccountView';
+import AccountView from './views/AccountView';
 import LogReg from './views/LogReg';
 import ChessView from './views/ChessView';
 import MatchFinderView from './views/MatchFinderView'
@@ -30,7 +30,8 @@ function App() {
                 <ChessView path={`/match/${match.roomId}`} match={match} socket={socket} userId={userId} userName={userName}/>
                 
                 {/* account page for editing account */}
-                {/* <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>     */}
+                <AccountView path="/account" loggedIn={loggedIn} userId={userId}/>    
+            
                 <NotFound default />
             </Router>
         </div>
