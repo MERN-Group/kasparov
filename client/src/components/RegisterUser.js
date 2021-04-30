@@ -57,64 +57,64 @@ const Register = props => {
 
     return (
         <div className="register">
-        <div className="pure-form pure-form-aligned">
-        <form onSubmit={register} >
-            <fieldset>
-                <div className="pure-controls">
-                    <h2>Register</h2>
-                    {
-                        confirmReg ? 
-                        <h4 style={{color: "green"}}>{confirmReg}</h4>
-                        : null
-                    }
-                </div>
-                <div className="pure-control-group">
-                    <label className="register-label">User Name:</label>
-                    <input id="aligned-name" required=""
-                        className="fname-field"
-                        type="text"
-                        name="userName"
-                        value={user.userName}
-                        onChange={(e) => handleChange(e)}
-                    />
-                </div>
-                <div className="pure-control-group">
-                    <label className="register-label">Email:</label>
-                    <input id="aligned-email" required=""
-                        className="email-field"
-                        type="email"
-                        name="email"
-                        value={user.email}
-                        onChange={ handleChange }
-                    />
-                </div>
-                <div className="pure-control-group">
-                    <label className="register-label">Password:</label>
-                    <input id="aligned-password" required=""
-                        className="password-field"
-                        type="password"
-                        name="password"
-                        value={user.password}
-                        onChange={ handleChange }
-                    />
-                </div>
-                <div className="pure-control-group">
-                <label className="register-label">Confirm:</label>
-                <input id="aligned-password" required=""
-                    className="password-confirm-field" 
-                    type="password"
-                    name="confirmPassword"
-                    value={user.confirmPassword}
-                    onChange={ handleChange }
-                />
-                </div>
-                <div className="center pure-controls">
-                    <button className="pure-button pure-button-primary" type="submit">Register</button>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-    </div>
+            <div className="pure-form pure-form-aligned">
+                <form onSubmit={register} >
+                    <fieldset>
+                        <div className="pure-controls">
+                            <h2>Register</h2>
+                            {
+                                confirmReg ? 
+                                <h4 style={{color: "green"}}>{confirmReg}</h4>
+                                : null
+                            }
+                        </div>
+                        <div className="pure-control-group">
+                            <label className="register-label">User Name:</label>
+                            <input id="aligned-name" required=""
+                                className="fname-field"
+                                type="text"
+                                name="userName"
+                                value={user.userName}
+                                onChange={(e) => handleChange(e)}
+                            />
+                        </div>
+                        <div className="pure-control-group">
+                            <label className="register-label">Email:</label>
+                            <input id="aligned-email" required=""
+                                className="email-field"
+                                type="email"
+                                name="email"
+                                value={user.email}
+                                onChange={ handleChange }
+                            />
+                        </div>
+                        <div className="pure-control-group">
+                            <label className="register-label">Password:</label>
+                            <input id="aligned-password" required=""
+                                className="password-field"
+                                type="password"
+                                name="password"
+                                value={user.password}
+                                onChange={ handleChange }
+                            />
+                        </div>
+                        <div className="pure-control-group">
+                        <label className="register-label">Confirm:</label>
+                        <input id="aligned-password" required=""
+                            className="password-confirm-field" 
+                            type="password"
+                            name="confirmPassword"
+                            value={user.confirmPassword}
+                            onChange={ handleChange }
+                        />
+                        </div>
+                        <div className="center pure-controls">
+                            <button className="pure-button pure-button-primary" type="submit">Register</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     );
 };
 
