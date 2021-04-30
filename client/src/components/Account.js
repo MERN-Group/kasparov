@@ -5,8 +5,10 @@ import axios from 'axios';
 
 const Account = (props) => {
     const { loggedIn, userId } = props;
+
     const [ userName, setUserName ] = useState("");
     const [ email, setEmail ] = useState("");
+
     // const [ errs, setErrs ] = useState({});
 
     const submitHandler = (e) => {
@@ -61,7 +63,7 @@ const Account = (props) => {
                 // we are logged in so display our data
                 <div className="account-info">
                     <form onSubmit={submitHandler}>
-                        <h2 className="account-h2">Account Info</h2>
+                        <h2 style={{marginTop: '50px'}}className="account-h2">Account Info</h2>
                         <div>
                             <label>User Name: </label>
                             <input className="userName-field" style={{marginTop: '50px'}} type="text"
