@@ -64,7 +64,7 @@ const Account = (props) => {
                         <h2 className="account-h2">Account Info</h2>
                         <div>
                             <label>User Name: </label>
-                            <input className="userName-field" type="text"
+                            <input className="userName-field" style={{marginTop: '50px'}} type="text"
                                 name="userName"
                                 value={userName}
                                 onChange={ (e) => setUserName( e.target.value ) }

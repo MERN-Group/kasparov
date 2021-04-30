@@ -57,6 +57,7 @@ function matchPlayers(user, socket) {
         player1.color = "w";
         player2.color = "b"
         // set the match
+        match.turn = 'w';
         match.player1 = player1;
         match.player2 = player2;
         match.roomId = roomId;
@@ -83,8 +84,15 @@ io.on("connection", socket => {
         socket.join(match.roomId)
     })
 
+    // socket.on('new_move', match => {
+    //     console.log(match.board)
+    //     socket.to(match.roomId).emit('opponent_moved', match.board);
+    // })
+
     socket.on('new_move', match => {
-        console.log(match.board)
-        socket.to(match.roomId).emit('opponent_moved', match.board);
+        // console.log('server hello')
+        // if ( match.turn == 'b' )
+        //     match.board = match.board.flat().reverse()
+        socket.to(match.roomId).emit('opponent_moved', match);
     })
 });

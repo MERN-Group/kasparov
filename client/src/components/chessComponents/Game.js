@@ -1,6 +1,16 @@
 import * as Chess from 'chess.js'
 import { BehaviorSubject } from 'rxjs'
 
+let validMove = false;
+export function wasMoveValid(){
+    if ( validMove === true )
+    {
+        validMove = false;
+        return true;
+    }
+    return false;
+}
+
 const chess = new Chess()
 
 export const gameSubject = new BehaviorSubject()
@@ -56,10 +66,11 @@ function updateGame(pendingPromotion) {
         result: isGameOver ? getGameResult() : null
     }
 
-    localStorage.setItem('savedGame', chess.fen())
+    // localStorage.setItem('savedGame', chess.fen())
 
     gameSubject.next(newGame)
 }
+
 function getGameResult() {
     if (chess.in_checkmate()) {
         const winner = chess.turn() === "w" ? 'BLACK' : 'WHITE'
