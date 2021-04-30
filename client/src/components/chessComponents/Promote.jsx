@@ -16,7 +16,7 @@ export default function Promote({
                 onClick={() => move(from, to, p)}
                 >
                 <img
-                    src={require(`../piece_images/${p}_${color}.png`)}
+                    src={require(`./assets/${p}_${color}.png`)}
                     alt=""
                     className="piece cursor-pointer"
                 />

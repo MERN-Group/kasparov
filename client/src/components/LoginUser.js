@@ -4,7 +4,7 @@ import { navigate } from '@reach/router';
 // import '../css/LoginUser.css'
 
 const LoginUser = (props) => {
-    const { loggedIn, setLoggedIn, setUserId } = props;
+    const { loggedIn, setLoggedIn, setUserId, setUserName } = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -26,6 +26,8 @@ const LoginUser = (props) => {
             setLoggedIn(true);
             console.log(res.data.id);
             setUserId(res.data.id);
+            console.log("username: " + res.data.userName);
+            setUserName(res.data.userName);
             navigate("/");
         })
         .catch(err => {
@@ -35,13 +37,13 @@ const LoginUser = (props) => {
     };
 
     return (
-        <div class="login">
-        <div  class="pure-form pure-form-aligned">
-        <div class="pure-controls">
+        <div className="login">
+        <div  className="pure-form pure-form-aligned">
+        <div className="pure-controls">
         <h2>Login</h2></div>
         <p className="error-text">{errorMessage ? errorMessage : ""}</p>
         <form className="login-form" onSubmit={login}>
-            <div class="pure-control-group">
+            <div className="pure-control-group">
             <label className="email-label">Email:</label>
             <input
                 className="email-input"
@@ -51,7 +53,7 @@ const LoginUser = (props) => {
                 onChange={(e) => setEmail(e.target.value)}
             />
             </div>
-            <div class="pure-control-group">
+            <div className="pure-control-group">
             <label className="login-label">Password:</label>
             <input 
                 className="password-input"
@@ -61,7 +63,7 @@ const LoginUser = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
             />
             </div>
-            <div className="center" class="pure-controls">
+            <div className="center pure-controls">
             <button className="pure-button pure-button-primary" type="submit">Sign In</button>
             </div>
         </form>
