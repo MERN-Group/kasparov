@@ -9,7 +9,6 @@ const ChessGame = (props) => {
     const [isGameOver, setIsGameOver] = useState()
     const [result, setResult] = useState()
     const [turn, setTurn] = useState('')
-    // const [ realTurn, setRealTurn ] = useState('w')
 
     useEffect(() => {
         initGame();

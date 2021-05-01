@@ -3,38 +3,29 @@ import BoardSquare from './BoardSquare'
 import { wasMoveValid, setChessTurn, getChessTurn, getValidMove, move } from './Game'
 // import * as Chess from 'chess.js'
 
-export default function Board({ board, setBoard, turn, setTurn, match, socket, userId, userName}) {
+export default function Board({ board, setTurn, match, socket }) {
 
-    const [currBoard, setCurrBoard] = useState([])
     const [, updateState] = useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
-    const [ playerMovedPiece, setPlayerMovedPiece ] = useState(false);
-    const [ opponentMoved, setOpponentMoved ] = useState(false);
+    // const forceUpdate = React.useCallback(() => updateState({}), []);
 
     socket.on('opponent_moved', match => {
+        console.log("Received move from opponent")
         setTurn(match.turn)
-        // setChessTurn(match.turn)
+        // make the move on the opponent's board
         move(match.from, match.to);
-
-        console.log("got move from opponent")
-        // console.log(match.board)
-        // setBoard(match.board)
     })
 
     useEffect(() => {
         
         // console.log(`Initial turn is ${turn}`)
-        setChessTurn(match.turn)
         setTurn(match.turn)
     }, [])
 
     useEffect(() => {
         if ( wasMoveValid() )
         {
-            console.log('sending move to opponent')
+            console.log('Sending move to opponent')
             // console.log(board)
-            match.board = board;
-            match.turn = getChessTurn()
             const { moveFrom, moveTo } = getValidMove()
             match.from = moveFrom;
             match.to = moveTo;

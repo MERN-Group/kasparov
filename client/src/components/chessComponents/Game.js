@@ -33,7 +33,7 @@ export function setChessTurn(color) {
 
 export function getChessTurn()
 {
-    return chess.getTurn()
+    return chess.turn()
 }
 
 export function initGame() {
@@ -86,7 +86,7 @@ function updateGame(pendingPromotion) {
         board: chess.board(),
         pendingPromotion,
         isGameOver,
-        turn: chess.getTurn(),
+        turn: chess.turn(),
         result: isGameOver ? getGameResult() : null
     }
 
@@ -97,7 +97,7 @@ function updateGame(pendingPromotion) {
 
 function getGameResult() {
     if (chess.in_checkmate()) {
-        const winner = chess.getTurn() === "w" ? 'BLACK' : 'WHITE'
+        const winner = chess.turn() === "w" ? 'BLACK' : 'WHITE'
         return `CHECKMATE - WINNER - ${winner}`
     } else if (chess.in_draw()) {
         let reason = '50 - MOVES - RULE'
