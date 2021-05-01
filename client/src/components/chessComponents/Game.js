@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs'
 
 let validMove = false;
 export function wasMoveValid(){
-    if ( validMove === true )
+    if ( validMove == true )
     {
         validMove = false;
         return true;
@@ -11,7 +11,7 @@ export function wasMoveValid(){
     return false;
 }
 
-const chess = new Chess()
+export const chess = new Chess()
 
 export const gameSubject = new BehaviorSubject()
 
@@ -51,6 +51,7 @@ export function move(from, to, promotion) {
     const legalMove = chess.move(tempMove)
 
     if (legalMove) {
+        validMove = true;
         updateGame()
     }
 }
@@ -62,7 +63,7 @@ function updateGame(pendingPromotion) {
         board: chess.board(),
         pendingPromotion,
         isGameOver,
-        turn: chess.turn(),
+        turn: chess.getTurn(),
         result: isGameOver ? getGameResult() : null
     }
 
@@ -73,7 +74,7 @@ function updateGame(pendingPromotion) {
 
 function getGameResult() {
     if (chess.in_checkmate()) {
-        const winner = chess.turn() === "w" ? 'BLACK' : 'WHITE'
+        const winner = chess.getTurn() === "w" ? 'BLACK' : 'WHITE'
         return `CHECKMATE - WINNER - ${winner}`
     } else if (chess.in_draw()) {
         let reason = '50 - MOVES - RULE'
