@@ -84,22 +84,7 @@ io.on("connection", socket => {
         socket.join(match.roomId)
     })
 
-    // socket.on('new_move', match => {
-    //     console.log(match.board)
-    //     socket.to(match.roomId).emit('opponent_moved', match.board);
-    // })
-
     socket.on('new_move', match => {
-        // console.log('server hello')
-        // if ( match.turn == 'b' )
-        // if ( match.turn == 'w' )
-        // {
-        //     match.turn = 'b'
-        // }
-        // else
-        //     match.turn = 'w'
-        // match.player1.turn = !match.player1.turn;
-        // match.player2.turn = !match.player2.turn;
         socket.to(match.roomId).emit('opponent_moved', match);
     })
 });

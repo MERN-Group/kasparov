@@ -4,10 +4,10 @@ import { navigate } from '@reach/router';
 // import '../css/LoginUser.css'
 
 const LoginUser = (props) => {
-    const { loggedIn, setLoggedIn, setUserId, setUserName } = props;
+    const { setLoggedIn, setUserId, setUserName } = props;
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    // const [errorMessage, setErrorMessage] = useState("");
 
     const login = event => {
         event.preventDefault();
@@ -26,7 +26,7 @@ const LoginUser = (props) => {
             setLoggedIn(true);
             console.log(res.data.id);
             setUserId(res.data.id);
-            console.log("username: " + res.data.userName);
+            console.log("userName: " + res.data.userName);
             setUserName(res.data.userName);
             navigate("/");
         })
@@ -41,7 +41,7 @@ const LoginUser = (props) => {
         <div  className="pure-form pure-form-aligned">
         <div className="pure-controls">
         <h2>Login</h2></div>
-        <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+        {/* <p className="error-text">{errorMessage ? errorMessage : ""}</p> */}
         <form className="login-form" onSubmit={login}>
             <div className="pure-control-group">
             <label className="email-label">Email:</label>
