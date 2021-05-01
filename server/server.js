@@ -92,7 +92,14 @@ io.on("connection", socket => {
     socket.on('new_move', match => {
         // console.log('server hello')
         // if ( match.turn == 'b' )
-        //     match.board = match.board.flat().reverse()
+        if ( match.turn == 'w' )
+        {
+            match.turn = 'b'
+        }
+        else
+            match.turn = 'w'
+        // match.player1.turn = !match.player1.turn;
+        // match.player2.turn = !match.player2.turn;
         socket.to(match.roomId).emit('opponent_moved', match);
     })
 });

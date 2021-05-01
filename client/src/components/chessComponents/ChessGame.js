@@ -8,9 +8,11 @@ const ChessGame = (props) => {
     const [board, setBoard] = useState([])
     const [isGameOver, setIsGameOver] = useState()
     const [result, setResult] = useState()
-    const [turn, setTurn] = useState()
+    const [turn, setTurn] = useState('')
+    // const [ realTurn, setRealTurn ] = useState('w')
+
     useEffect(() => {
-        initGame()
+        initGame();
         const subscribe = gameSubject.subscribe((game) => {
             setBoard(game.board)
             setIsGameOver(game.isGameOver)
@@ -35,7 +37,10 @@ const ChessGame = (props) => {
                 
                 {/* <h2>{ match.player1.userName === userName ? match.player2.userName : userName }</h2> */}
                 <div className="board-container">
-                    <Board board={board} turn={turn} match={match} socket={socket} userId={userId} userName={userName}/>
+                    <Board  board={board} setBoard={setBoard} 
+                            turn={turn} setTurn={setTurn} 
+                            match={match} socket={socket}
+                            userId={userId} userName={userName}/>
                 </div>
                 {result && <p className="vertical-text">{result}</p>}
             </div>
