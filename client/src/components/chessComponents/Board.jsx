@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import BoardSquare from './BoardSquare'
-import { wasMoveValid, chess } from './Game'
+import { wasMoveValid, setChessTurn, getChessTurn, getValidMove, move } from './Game'
 // import * as Chess from 'chess.js'
 
 export default function Board({ board, setBoard, turn, setTurn, match, socket, userId, userName}) {
@@ -13,16 +13,18 @@ export default function Board({ board, setBoard, turn, setTurn, match, socket, u
 
     socket.on('opponent_moved', match => {
         setTurn(match.turn)
-        chess.turn = match.turn;
+        // setChessTurn(match.turn)
+        move(match.from, match.to);
 
         console.log("got move from opponent")
         // console.log(match.board)
-        setBoard(match.board)
+        // setBoard(match.board)
     })
 
     useEffect(() => {
         
         // console.log(`Initial turn is ${turn}`)
+        setChessTurn(match.turn)
         setTurn(match.turn)
     }, [])
 
@@ -32,6 +34,10 @@ export default function Board({ board, setBoard, turn, setTurn, match, socket, u
             console.log('sending move to opponent')
             // console.log(board)
             match.board = board;
+            match.turn = getChessTurn()
+            const { moveFrom, moveTo } = getValidMove()
+            match.from = moveFrom;
+            match.to = moveTo;
             socket.emit('new_move', match)
         }
     }, [board])
@@ -53,7 +59,7 @@ export default function Board({ board, setBoard, turn, setTurn, match, socket, u
         return `${letter}${y + 1}`
     }
 
-    console.log(`Turn is ${chess.getTurn()}`)
+    console.log(`Turn is ${getChessTurn()}`)
     return (
         <div className="board">
         {board.flat().map((piece, i) => (

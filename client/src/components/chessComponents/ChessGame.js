@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { gameSubject, initGame, resetGame } from './Game'
+import { gameSubject, getChessTurn, initGame, resetGame } from './Game'
 import Board from './Board'
 import '../../App.css'
 
@@ -24,8 +24,8 @@ const ChessGame = (props) => {
 
     return (
         <>
-            <h2 style={{marginTop: '80px'}}>{ turn === 'w' && match.player1.color === 'w' ? match.player1.userName : match.player2.userName }'s Turn</h2>
             <div className="container">
+                
                 {isGameOver && (
                     <h2 className="vertical-text">
                     GAME OVER
@@ -36,7 +36,8 @@ const ChessGame = (props) => {
                 )}
                 
                 {/* <h2>{ match.player1.userName === userName ? match.player2.userName : userName }</h2> */}
-                <div className="board-container">
+                <div className="board-container" style={{textAlign: 'center'}}>
+                    <h2 style={{marginBottom: '30px', color: 'white'}}>{ getChessTurn() === 'w' && match.player1.color === 'w' ? match.player1.userName : match.player2.userName }'s Turn</h2>
                     <Board  board={board} setBoard={setBoard} 
                             turn={turn} setTurn={setTurn} 
                             match={match} socket={socket}
