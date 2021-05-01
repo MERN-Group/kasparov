@@ -2,8 +2,12 @@ import * as Chess from 'chess.js'
 import { BehaviorSubject } from 'rxjs'
 
 let validMove = false;
+let moveTo = "";
+let moveFrom = "";
+
+
 export function wasMoveValid(){
-    if ( validMove === true )
+    if ( validMove == true )
     {
         validMove = false;
         return true;
@@ -11,9 +15,26 @@ export function wasMoveValid(){
     return false;
 }
 
-const chess = new Chess()
+export function getValidMove()
+{
+    return {moveFrom, moveTo}
+}
+
+export const chess = new Chess()
 
 export const gameSubject = new BehaviorSubject()
+
+export function setChessTurn(color) {
+	let tokens = chess.fen().split(" ");
+	tokens[1] = color;
+	tokens[3] = "-";
+	chess.load(tokens.join(" "));
+}
+
+export function getChessTurn()
+{
+    return chess.turn()
+}
 
 export function initGame() {
     // const savedGame = localStorage.getItem('savedGame')
@@ -51,6 +72,9 @@ export function move(from, to, promotion) {
     const legalMove = chess.move(tempMove)
 
     if (legalMove) {
+        validMove = true;
+        moveTo = to;
+        moveFrom = from;
         updateGame()
     }
 }

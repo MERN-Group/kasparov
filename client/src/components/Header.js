@@ -4,7 +4,7 @@ import axios from 'axios';
 // import '../css/Header.css';
 
 const Header = (props) => {
-    const { loggedIn, setLoggedIn, socket } = props;
+    const { loggedIn, setLoggedIn } = props;
     // console.log("LoggedIn: " + loggedIn);
     const logout = (e) => {
         e.preventDefault();
@@ -15,7 +15,6 @@ const Header = (props) => {
         })
         .then((res) => {
             console.log(res.data);
-            socket.disconnect(true);
             navigate("/logreg");
         })
         .catch(err => {
@@ -27,8 +26,9 @@ const Header = (props) => {
     const handleButton = (e) => {
         if ( loggedIn )
         {
-            logout(e);
             setLoggedIn(false);
+            logout(e);
+            navigate("/logreg")
         } else {
             navigate("/logreg");
         }

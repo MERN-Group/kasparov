@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
 import Header from './components/Header';
 import AccountView from './views/AccountView';
@@ -16,6 +16,10 @@ function App() {
         )
     };
 
+    useEffect(() => {
+        return () => socket.disconnect(true);
+    }, [])
+    
     const [ match, setMatch ] = useState({});
     const [ loggedIn, setLoggedIn ] = useState(false);
     const [ userId, setUserId ] = useState("");

@@ -84,15 +84,7 @@ io.on("connection", socket => {
         socket.join(match.roomId)
     })
 
-    // socket.on('new_move', match => {
-    //     console.log(match.board)
-    //     socket.to(match.roomId).emit('opponent_moved', match.board);
-    // })
-
     socket.on('new_move', match => {
-        // console.log('server hello')
-        // if ( match.turn == 'b' )
-        //     match.board = match.board.flat().reverse()
         socket.to(match.roomId).emit('opponent_moved', match);
     })
 });

@@ -1,58 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import BoardSquare from './BoardSquare'
-import { wasMoveValid } from './Game'
+import { wasMoveValid, setChessTurn, getChessTurn, getValidMove, move } from './Game'
+// import * as Chess from 'chess.js'
 
+export default function Board({ board, setTurn, match, socket }) {
 
-export default function Board({ board, turn, match, socket, userId, userName}) {
-
-    const [currBoard, setCurrBoard] = useState([])
     const [, updateState] = useState();
-    const forceUpdate = React.useCallback(() => updateState({}), []);
-    const [ onMount, setOnMount ] = useState(true);
-    const [ ogBoard, setOGBoard ] = useState(board);
-
-    function nyquil(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    
-    async function sleep() {
-        await nyquil(2000);
-        
-        // Sleep in loop
-        for (let i = 0; i < 5; i++) {
-            if (i === 3)
-            await nyquil(2000);
-        }
-    }
+    // const forceUpdate = React.useCallback(() => updateState({}), []);
 
     socket.on('opponent_moved', match => {
-        turn = match.turn
-        console.log("got move from opponent")
-        setCurrBoard(match.board.flat().reverse())
+        console.log("Received move from opponent")
+        setTurn(match.turn)
+        // make the move on the opponent's board
+        move(match.from, match.to);
     })
 
     useEffect(() => {
-        turn = match.turn;
-
-
-            
+        
+        // console.log(`Initial turn is ${turn}`)
+        setTurn(match.turn)
     }, [])
 
     useEffect(() => {
-        sleep();
-        // }  
-        setCurrBoard(
-            turn === 'w' ? board.flat() : board.flat().reverse()
-        )
-        // setCurrBoard(board.flat());
-    }, [board,turn])
+        if ( wasMoveValid() )
+        {
+            console.log('Sending move to opponent')
+            // console.log(board)
+            const { moveFrom, moveTo } = getValidMove()
+            match.from = moveFrom;
+            match.to = moveTo;
+            socket.emit('new_move', match)
+        }
+    }, [board])
 
     function getXYPosition(i) {
-        const x = turn === 'w' ? i % 8 : Math.abs((i % 8) - 7)
-        const y =
-        turn === 'w'
-            ? Math.abs(Math.floor(i / 8) - 7)
-            : Math.floor(i / 8)
+        const x = i % 8 
+        const y = Math.abs(Math.floor(i / 8) - 7)
         return { x, y }
     }
 
@@ -67,9 +50,10 @@ export default function Board({ board, turn, match, socket, userId, userName}) {
         return `${letter}${y + 1}`
     }
 
+    console.log(`Turn is ${getChessTurn()}`)
     return (
         <div className="board">
-        {currBoard.map((piece, i) => (
+        {board.flat().map((piece, i) => (
             <div key={i} className="square">
                 <BoardSquare
                     piece={piece}
